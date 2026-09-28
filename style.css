@@ -11,7 +11,19 @@
   --accent: #2563eb;
   --accent-hover: #1d4ed8;
   --border: #e5e5e5;
+  --on-accent: #fff;
   --section-gap: 2.5rem;
+}
+
+:root[data-theme="dark"] {
+  --text: #e6e6e6;
+  --text-secondary: #a3a3a3;
+  --bg: #16171a;
+  --accent: #7aa7ff;
+  --accent-hover: #9dbcff;
+  --border: #2e3036;
+  --on-accent: #16171a;
+  color-scheme: dark;
 }
 
 html {
@@ -99,9 +111,11 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
+  gap: 0.4rem;
   height: 34px;
-  border-radius: 50%;
+  padding: 0 0.85rem;
+  border-radius: 17px;
+  font-size: 0.88rem;
   color: var(--text-secondary);
   border: 1.5px solid var(--border);
   transition: color 0.15s, border-color 0.15s;
@@ -113,24 +127,29 @@ a:hover {
   text-decoration: none;
 }
 
-/* ── Navigation (sidebar) ── */
+/* ── Theme toggle (top right) ── */
 
-.sidebar nav {
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
   display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  margin-top: 0.8rem;
-  font-size: 0.9rem;
-}
-
-.sidebar nav a {
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
   color: var(--text-secondary);
-  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
 }
 
-.sidebar nav a:hover {
+.theme-toggle:hover {
   color: var(--accent);
-  text-decoration: none;
+  border-color: var(--accent);
 }
 
 /* ── Main content ── */
@@ -257,7 +276,7 @@ section h2 {
 
 .cv-request:hover {
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   text-decoration: none;
 }
 
@@ -271,6 +290,13 @@ section h2 {
   width: 100%;
   border-radius: 6px;
   display: block;
+}
+
+.laguna .caption {
+  margin-top: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  text-align: center;
 }
 
 /* ── Footer ── */
@@ -302,12 +328,5 @@ footer {
   .sidebar img {
     width: 150px;
     height: 150px;
-  }
-
-  .sidebar nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.8rem;
   }
 }

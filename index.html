@@ -9,9 +9,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <script>
+    try { if (localStorage.getItem("theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}
+  </script>
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
+
+<button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" stroke="none"/></svg>
+</button>
 
 <div class="page">
 
@@ -27,15 +36,10 @@
     </div>
     <div class="social-icons">
       <a href="https://scholar.google.com/citations?user=55mgM0wAAAAJ&hl=en" target="_blank" rel="noopener" title="Google Scholar">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+        <span>Google Scholar</span>
       </a>
     </div>
-    <nav>
-      <a href="#research">Research</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#experience">Experience</a>
-      <a href="#cv">CV</a>
-    </nav>
   </aside>
 
   <!-- ── Main content ── -->
@@ -82,7 +86,7 @@
       <h2>Work in Progress</h2>
 
       <div class="paper">
-        <div class="title">The Great Recession and the U.S. Transition to Below Replacement Fertility Rates</div>
+        <div class="title">The Effect of the Great Recession on U.S. Fertility Rates</div>
         <div class="authors">(with Martha Bailey and Lisa Dettling)</div>
       </div>
 
@@ -98,7 +102,7 @@
 
       <div class="experience-item">
         <div class="role">Teaching Assistant to <a href="http://ricardotruglia.bol.ucla.edu/" target="_blank" rel="noopener"> Ricardo Perez-Truglia</a></div>
-        <div class="dates">MGMTEX 405: Economic Analysis for Managers · Fall 2024 &amp; Fall 2025</div>
+        <div class="dates">MGMTEX 405: Economic Analysis for Managers · Fall 2024, Fall 2025 &amp; Fall 2026</div>
       </div>
 
       <div class="experience-item">
@@ -112,13 +116,13 @@
       <h2>Research Experience</h2>
 
       <div class="experience-item">
-        <div class="role">Research Assistant to <a href="https://www.clemence.tricaud.com/" target="_blank" rel="noopener">Clemence Tricaud</a></div>
-        <div class="dates">September 2025 – Present</div>
+        <div class="role">Research Assistant to <a href="https://www.melaniewasserman.com/" target="_blank" rel="noopener">Melanie Wasserman</a></div>
+        <div class="dates">September 2026 – Present; July 2023 – July 2025</div>
       </div>
 
       <div class="experience-item">
-        <div class="role">Research Assistant to <a href="https://www.melaniewasserman.com/" target="_blank" rel="noopener">Melanie Wasserman</a></div>
-        <div class="dates">July 2023 – July 2025</div>
+        <div class="role">Research Assistant to <a href="https://www.clemence.tricaud.com/" target="_blank" rel="noopener">Clemence Tricaud</a></div>
+        <div class="dates">September 2025 – May 2026</div>
       </div>
     </section>
 
@@ -126,6 +130,9 @@
     <section>
       <h2>Grants &amp; Awards</h2>
 
+      <div class="grant-item">
+        UCLA Anderson Harold and Pauline Price Center for Entrepreneurship &amp; Innovation, Research Grant <span class="years">· 2026–2027</span>
+      </div>
       <div class="grant-item">
         UCLA Anderson Center for Global Management, Global Research Award <span class="years">· 2025–2026</span>
       </div>
@@ -148,16 +155,26 @@
     <!-- ── Laguna ── -->
     <div class="laguna">
       <img src="laguna.jpeg" alt="Laguna Beach, California">
+      <div class="caption">Laguna Beach · photo by me</div>
     </div>
 
     <!-- ── Footer ── -->
     <footer>
-      <p>&copy; 2026 Geer Ang · Last updated April 2026</p>
+      <p>&copy; 2026 Geer Ang · Last updated September 2026</p>
     </footer>
 
   </main>
 
 </div>
+
+<script>
+  document.querySelector(".theme-toggle").addEventListener("click", function () {
+    var root = document.documentElement;
+    var dark = root.dataset.theme !== "dark";
+    if (dark) root.dataset.theme = "dark"; else delete root.dataset.theme;
+    try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+  });
+</script>
 
 </body>
 </html>
